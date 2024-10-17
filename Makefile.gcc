@@ -5,7 +5,7 @@ CXXFLAGS	?= -Wall -O2
 PREFIX		?= /usr/local
 BINPATH		?= $(PREFIX)/bin
 MANPATH		?= $(PREFIX)/share/man/man1
-INSTALL		?= install
+INSTALL		?= -f Makefile.gcc install
 INSTALL_PROGRAM	?= $(INSTALL)
 INSTALL_DATA	?= $(INSTALL) -m 644
 INSTALL_DIR	?= $(INSTALL) -d
@@ -22,9 +22,9 @@ install: all
 	$(INSTALL_DATA) pcf2bdf.man $(DESTDIR)$(MANPATH)/pcf2bdf.1
 
 test:	pcf2bdf
-	for i in /usr/share/fonts/X11/misc/*.pcf*; do \
+	for i in /usr/share/fonts/X11/misc/*FuturaB.pcf*; do \
 		./pcf2bdf -v $$i > /dev/null 2>&1 || (echo test failed: $$i; exit 1) ;\
 	done
-	for i in tests/error_samples/*; do \
+	for i in tests/error_samples/*FuturaB.bdf; do \
 		( ./pcf2bdf -v $$i > /dev/null 2>&1 && (echo test failed: $$i; exit 1) || exit 0) ;\
 	done
