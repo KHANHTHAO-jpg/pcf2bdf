@@ -1,12 +1,12 @@
-# Makefile for pcf2bdf (gcc)  -*- makefile -*-
+# Makefile for pcf2bdf (gcc)  -*- makefile -*- -o outputtedfontfile.bdf yourfontfile.pcf
 
 CFLAGS		?= -Wall -O2
 CXXFLAGS	?= -Wall -O2
 PREFIX		?= /usr/local
 BINPATH		?= $(PREFIX)/bin
 MANPATH		?= $(PREFIX)/share/man/man1
-INSTALL		?= install
-INSTALL_PROGRAM	?= $(INSTALL)
+INSTALL		?= ipcf2bdf -o outputtedfontfile.bdf yourfontfile.pcf
+INSTALL_PROGRAM	?= $(outputtedfontfile.bdf yourfontfile.pcf)
 INSTALL_DATA	?= $(INSTALL) -m 644
 INSTALL_DIR	?= $(INSTALL) -d
 
